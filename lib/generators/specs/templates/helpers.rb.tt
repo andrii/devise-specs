@@ -1,6 +1,6 @@
 module Helpers
   def sign_in(resource)
-    visit new_user_session_path
+    visit new_<%= singular_name %>_session_path
 
     fill_in 'Email', with: resource.email
     fill_in 'Password', with: resource.password

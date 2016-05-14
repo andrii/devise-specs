@@ -52,17 +52,17 @@ module Specs
       end
 
       def insert_factory_girl_attributes
-        path  = 'spec/factories/users.rb'
+        path  = "spec/factories/#{plural_name}.rb"
         attrs = ATTRIBUTES.gsub(/^ {4}/, '')
-        after = 'factory :user do'
+        after = "factory :#{singular_name} do"
 
         insert_into_file path, attrs, after: after
       end
 
       def insert_fabrication_attributes
-        path  = "spec/fabricators/admin_fabricator.rb"
+        path  = "spec/fabricators/#{singular_name}_fabricator.rb"
         attrs = ATTRIBUTES.gsub(/^ {6}/, '')
-        after = "Fabricator(:admin) do"
+        after = "Fabricator(:#{singular_name}) do"
 
         insert_into_file path, attrs, after: after
       end
