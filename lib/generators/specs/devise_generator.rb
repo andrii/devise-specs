@@ -12,6 +12,8 @@ module Specs
       end
 
       def insert_fixture_replacement_attributes
+        return if behavior == :revoke
+
         if fixture_replacement == :factory_girl
           insert_factory_girl_attributes
         elsif fixture_replacement == :fabrication
