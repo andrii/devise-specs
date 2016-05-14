@@ -22,8 +22,3 @@ Given(/^I install (.*)$/) do |gem|
 
   run_simple 'bundle install'
 end
-
-Given(/^I set up fabrication$/) do
-  # set fabrication as a fixture replacement
-  copy '%/fabrication.rb', 'config/initializers/fabrication.rb'
-end

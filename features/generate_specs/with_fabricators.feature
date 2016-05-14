@@ -5,7 +5,6 @@ Feature: Generate specs with fabricators
 
   Scenario: running a devise generator with Fabrication installed
     Given I install fabrication
-      And I set up fabrication
     When I run `rails generate devise Admin`
     Then the output should contain:
       """

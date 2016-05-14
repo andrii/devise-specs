@@ -19,7 +19,6 @@ Feature: Delete specs
 
   Scenario: undo changes with Fabrication installed
     Given I install fabrication
-      And I set up fabrication
     When I run `rails destroy devise User`
     Then the output should contain:
       """
