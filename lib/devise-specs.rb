@@ -1,0 +1,1 @@
+require 'devise/specs/railtie'
