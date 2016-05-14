@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature 'User signs up' do
+feature '<%= human_name %> signs up' do
   scenario 'with valid data' do
-    visit new_user_registration_path
+    visit new_<%= singular_name %>_registration_path
 
     fill_in 'Email', with: 'username@example.com'
     fill_in 'Password', with: 'password'
@@ -13,7 +13,7 @@ feature 'User signs up' do
   end
 
   scenario 'with invalid data' do
-    visit new_user_registration_path
+    visit new_<%= singular_name %>_registration_path
 
     click_button 'Sign up'
 

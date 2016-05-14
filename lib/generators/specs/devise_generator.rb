@@ -1,6 +1,6 @@
 module Specs
   module Generators
-    class DeviseGenerator < Rails::Generators::Base
+    class DeviseGenerator < Rails::Generators::NamedBase
       ATTRIBUTES = %(
         email 'username@example.com'
         password 'password')
@@ -12,15 +12,17 @@ module Specs
       end
 
       def insert_fixture_replacement_attributes
-        path  = 'spec/factories/users.rb'
-        attrs = ATTRIBUTES.gsub(/^ {4}/, '')
-        after = 'factory :user do'
-
-        insert_into_file path, attrs, after: after
+        if fixture_replacement == :factory_girl
+          insert_factory_girl_attributes
+        elsif fixture_replacement == :fabrication
+          insert_fabrication_attributes
+        end
       end
 
       def create_factory_girl_config_file
-        template 'factory_girl.rb', 'spec/support/factory_girl.rb'
+        if fixture_replacement == :factory_girl
+          template 'factory_girl.rb', 'spec/support/factory_girl.rb'
+        end
       end
 
       def create_helpers_file
@@ -29,16 +31,38 @@ module Specs
 
       def create_specs
         template 'resource_signs_up_spec.rb',
-                 'spec/features/user_signs_up_spec.rb'
+                 "spec/features/#{singular_name}_signs_up_spec.rb"
 
         template 'resource_signs_in_spec.rb',
-                 'spec/features/user_signs_in_spec.rb'
+                 "spec/features/#{singular_name}_signs_in_spec.rb"
 
         template 'resource_signs_out_spec.rb',
-                 'spec/features/user_signs_out_spec.rb'
+                 "spec/features/#{singular_name}_signs_out_spec.rb"
 
         template 'resource_resets_password_spec.rb',
-                 'spec/features/user_resets_password_spec.rb'
+                 "spec/features/#{singular_name}_resets_password_spec.rb"
+      end
+
+      private
+
+      def fixture_replacement
+        Rails.application.config.generators.rails[:fixture_replacement]
+      end
+
+      def insert_factory_girl_attributes
+        path  = 'spec/factories/users.rb'
+        attrs = ATTRIBUTES.gsub(/^ {4}/, '')
+        after = 'factory :user do'
+
+        insert_into_file path, attrs, after: after
+      end
+
+      def insert_fabrication_attributes
+        path  = "spec/fabricators/admin_fabricator.rb"
+        attrs = ATTRIBUTES.gsub(/^ {6}/, '')
+        after = "Fabricator(:admin) do"
+
+        insert_into_file path, attrs, after: after
       end
     end
   end

@@ -1,18 +1,26 @@
 require 'rails_helper'
 
-feature 'User signs in' do
+feature '<%= human_name %> signs in' do
   scenario 'with valid credentials' do
-    user = create :user
+<% if fixture_replacement == :factory_girl -%>
+    <%= singular_name %> = create :<%= singular_name %>
+<% elsif fixture_replacement == :fabrication -%>
+    <%= singular_name %> = Fabricate :<%= singular_name %>
+<% end -%>
 
-    sign_in user
+    sign_in <%= singular_name %>
 
     expect(page).to have_text 'Signed in successfully.'
   end
 
   scenario 'with invalid credentials' do
-    user = build :user
+<% if fixture_replacement == :factory_girl -%>
+    <%= singular_name %> = build :<%= singular_name %>
+<% elsif fixture_replacement == :fabrication -%>
+    <%= singular_name %> = Fabricate.build :<%= singular_name %>
+<% end -%>
 
-    sign_in user
+    sign_in <%= singular_name %>
 
     expect(page).to have_text 'Invalid Email or password.'
   end

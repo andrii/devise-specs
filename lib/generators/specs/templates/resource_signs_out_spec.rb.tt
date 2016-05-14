@@ -1,10 +1,14 @@
 require 'rails_helper'
 
-feature 'User signs out' do
-  scenario 'user signed in' do
-    user = create :user
+feature '<%= human_name %> signs out' do
+  scenario '<%= singular_name %> signed in' do
+<% if fixture_replacement == :factory_girl -%>
+    <%= singular_name %> = create :<%= singular_name %>
+<% elsif fixture_replacement == :fabrication -%>
+    <%= singular_name %> = Fabricate :<%= singular_name %>
+<% end -%>
 
-    sign_in user
+    sign_in <%= singular_name %>
 
     click_link 'Sign Out'
 
