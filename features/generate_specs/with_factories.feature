@@ -1,4 +1,4 @@
-Feature: Generate specs with factories
+Feature: With factories
 
   Background:
     Given I set up devise-specs
@@ -19,7 +19,7 @@ Feature: Generate specs with factories
             create    spec/features/user_resets_password_spec.rb
       """
     And the file "spec/features/user_signs_up_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'User signs up' do
@@ -45,7 +45,7 @@ Feature: Generate specs with factories
       end
       """
     And the file "spec/features/user_signs_in_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'User signs in' do
@@ -67,7 +67,7 @@ Feature: Generate specs with factories
       end
       """
     And the file "spec/features/user_signs_out_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'User signs out' do
@@ -83,7 +83,7 @@ Feature: Generate specs with factories
       end
       """
     And the file "spec/features/user_resets_password_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'User resets a password' do

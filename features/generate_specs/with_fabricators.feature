@@ -1,4 +1,4 @@
-Feature: Generate specs with fabricators
+Feature: With fabricators
 
   Background:
     Given I set up devise-specs
@@ -18,7 +18,7 @@ Feature: Generate specs with fabricators
             create    spec/features/admin_resets_password_spec.rb
       """
     And the file "spec/features/admin_signs_up_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'Admin signs up' do
@@ -44,7 +44,7 @@ Feature: Generate specs with fabricators
       end
       """
     And the file "spec/features/admin_signs_in_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'Admin signs in' do
@@ -66,7 +66,7 @@ Feature: Generate specs with fabricators
       end
       """
     And the file "spec/features/admin_signs_out_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'Admin signs out' do
@@ -82,7 +82,7 @@ Feature: Generate specs with fabricators
       end
       """
     And the file "spec/features/admin_resets_password_spec.rb" should contain:
-      """
+      """ruby
       require 'rails_helper'
 
       feature 'Admin resets a password' do
