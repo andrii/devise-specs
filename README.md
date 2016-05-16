@@ -1,5 +1,7 @@
 # devise-specs
 
+[![Build Status](https://travis-ci.org/andrii/devise-specs.svg?branch=master)](https://travis-ci.org/andrii/devise-specs)
+
 devise-specs is a Rails generator that adds the Devise authentication acceptance tests when you run the `devise` generator. The tests are RSpec feature specs containing Factory Girl or Fabricatoin fixture replacement methods and Capybara actions.
 
 Generated feature specs test the following features:
