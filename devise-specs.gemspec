@@ -7,6 +7,8 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/andrii/devise-specs'
   s.license  = 'MIT'
   s.files    = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(spec|features|fixtures)/}) }
+  
+  s.required_ruby_version = '>= 2.1.0'
 
   s.add_runtime_dependency 'devise', '~> 4.1'
 
