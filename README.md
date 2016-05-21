@@ -62,7 +62,7 @@ Add the authentication links to the layout, `user_signed_in?` should be `admin_s
 <% end %>
 ```
 
-Add the following lines to `config/application.rb` if you are using the Fabrication gem and gem version is less than 2.15.1:
+Add the following lines to `config/application.rb` if you are using the Fabrication gem with version less than 2.15.1:
 ```ruby
 config.generators do |g|
   g.fixture_replacement :fabrication
@@ -103,6 +103,32 @@ Finished in 1.08 seconds (files took 2.1 seconds to load)
 ## Documentation
 
 Visit the [Relish docs](https://relishapp.com/andrii/devise-specs/docs) for all the available features and examples of the generated feature specs.
+
+## Output
+
+`gsub    spec/rails_helper.rb`
+
+Uncomments the line that auto-requires all files in the support directory.
+
+`insert    spec/fabricators/*_fabricator.rb`
+
+Adds `email` and `password` attributes to the fabricator.
+
+`insert    spec/factories/*.rb`
+
+Adds `email` and `password` attributes to the factory.
+
+`create    spec/support/factory_girl.rb`
+
+Includes `FactoryGirl::Syntax::Methods` into RSpec config to avoid prefacing Factory Girl methods with `FactoryGirl`.
+
+`create    spec/support/helpers.rb`
+
+Includes `sign_in(resource)` helper into feature specs.
+
+`create    spec/features/*_spec.rb`
+
+Generates a corresponding feature spec.
 
 ## License
 
