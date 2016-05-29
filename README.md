@@ -130,6 +130,20 @@ Includes `sign_in(resource)` helper into feature specs.
 
 Generates a corresponding feature spec.
 
+## Testing
+
+Install Ruby, development tools, Nokogiri, SQLite and JavaScript runtime system dependencies.
+
+On Ubuntu/Mint/Debian:
+```
+$ apt-get install ruby-full build-essential zlib1g-dev libsqlite3-dev nodejs
+```
+
+Install development dependencies with `bundle install` and run the tests: 
+```
+$ bundle exec rake
+```
+
 ## License
 
 MIT License
