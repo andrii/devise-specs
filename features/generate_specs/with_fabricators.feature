@@ -31,6 +31,8 @@ Feature: With fabricators
           click_button 'Sign up'
 
           expect(page).to have_text 'Welcome! You have signed up successfully.'
+          expect(page).to have_link 'Sign Out'
+          expect(page).to have_current_path root_path
         end
 
         scenario 'with invalid data' do
@@ -40,6 +42,7 @@ Feature: With fabricators
 
           expect(page).to have_text "Email can't be blank"
           expect(page).to have_text "Password can't be blank"
+          expect(page).to have_no_link 'Sign Out'
         end
       end
       """
@@ -54,6 +57,8 @@ Feature: With fabricators
           sign_in admin
 
           expect(page).to have_text 'Signed in successfully.'
+          expect(page).to have_link 'Sign Out'
+          expect(page).to have_current_path root_path
         end
 
         scenario 'with invalid credentials' do
@@ -62,6 +67,7 @@ Feature: With fabricators
           sign_in admin
 
           expect(page).to have_text 'Invalid Email or password.'
+          expect(page).to have_no_link 'Sign Out'
         end
       end
       """
@@ -78,6 +84,8 @@ Feature: With fabricators
           click_link 'Sign Out'
 
           expect(page).to have_text 'Signed out successfully.'
+          expect(page).to have_no_link 'Sign Out'
+          expect(page).to have_current_path root_path
         end
       end
       """
@@ -95,6 +103,7 @@ Feature: With fabricators
           click_button 'Send me reset password instructions'
 
           expect(page).to have_text 'You will receive an email with instructions'
+          expect(page).to have_current_path new_admin_session_path
         end
 
         scenario 'admin enters an invalid email' do
@@ -116,6 +125,7 @@ Feature: With fabricators
           click_button 'Change my password'
 
           expect(page).to have_text 'Your password has been changed successfully.'
+          expect(page).to have_current_path root_path
         end
 
         scenario 'password reset token is invalid' do
