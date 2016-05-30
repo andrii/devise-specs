@@ -71,7 +71,7 @@ end
 
 ## Usage
 
-Generate a Devise model, e.g. `User`:
+Specs are created automatically when you generate a Devise model, e.g. `User`:
 ```
 $ rails generate devise User
          ...
@@ -84,6 +84,11 @@ $ rails generate devise User
       create    spec/features/user_signs_in_spec.rb
       create    spec/features/user_signs_out_spec.rb
       create    spec/features/user_resets_password_spec.rb
+```
+
+If a Devise model is already present, run the `devise:specs` generator directly:
+```
+$ rails generate devise:specs User
 ```
 
 Run the migrations:

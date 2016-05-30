@@ -1,6 +1,6 @@
-module Specs
+module Devise
   module Generators
-    class DeviseGenerator < Rails::Generators::NamedBase
+    class SpecsGenerator < Rails::Generators::NamedBase
       ATTRIBUTES = %(
         email 'username@example.com'
         password 'password')
