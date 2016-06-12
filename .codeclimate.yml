@@ -6,7 +6,7 @@ engines:
       languages:
       - ruby
     exclude_fingerprints:
-    - 9f7a179915ee4a7f1d639e9242aedd01
+    - 3b39f38c33cdc3b6dc57a5d8160f707b
   fixme:
     enabled: true
   rubocop:
