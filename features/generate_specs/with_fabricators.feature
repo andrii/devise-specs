@@ -11,7 +11,7 @@ Feature: With fabricators
             invoke  specs
               gsub    spec/rails_helper.rb
             insert    spec/fabricators/admin_fabricator.rb
-            create    spec/support/helpers.rb
+            create    spec/support/devise.rb
             create    spec/features/admin_signs_up_spec.rb
             create    spec/features/admin_signs_in_spec.rb
             create    spec/features/admin_signs_out_spec.rb
@@ -54,7 +54,11 @@ Feature: With fabricators
         scenario 'with valid credentials' do
           admin = Fabricate :admin
 
-          sign_in admin
+          visit new_admin_session_path
+
+          fill_in 'Email', with: admin.email
+          fill_in 'Password', with: admin.password
+          click_button 'Log in'
 
           expect(page).to have_text 'Signed in successfully.'
           expect(page).to have_link 'Sign Out'
@@ -64,7 +68,11 @@ Feature: With fabricators
         scenario 'with invalid credentials' do
           admin = Fabricate.build :admin
 
-          sign_in admin
+          visit new_admin_session_path
+
+          fill_in 'Email', with: admin.email
+          fill_in 'Password', with: admin.password
+          click_button 'Log in'
 
           expect(page).to have_text 'Invalid Email or password.'
           expect(page).to have_no_link 'Sign Out'
@@ -80,6 +88,8 @@ Feature: With fabricators
           admin = Fabricate :admin
 
           sign_in admin
+
+          visit root_path
 
           click_link 'Sign Out'
 

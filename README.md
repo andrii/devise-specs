@@ -79,7 +79,7 @@ $ rails generate devise User
         gsub    spec/rails_helper.rb
       insert    spec/factories/users.rb
       create    spec/support/factory_girl.rb
-      create    spec/support/helpers.rb
+      create    spec/support/devise.rb
       create    spec/features/user_signs_up_spec.rb
       create    spec/features/user_signs_in_spec.rb
       create    spec/features/user_signs_out_spec.rb
@@ -127,9 +127,9 @@ Adds `email` and `password` attributes to the factory.
 
 Includes `FactoryGirl::Syntax::Methods` into RSpec config to avoid prefacing Factory Girl methods with `FactoryGirl`.
 
-`create    spec/support/helpers.rb`
+`create    spec/support/devise.rb`
 
-Includes `sign_in(resource)` helper into feature specs.
+Includes Devise integration test helpers into feature specs.
 
 `create    spec/features/*_spec.rb`
 

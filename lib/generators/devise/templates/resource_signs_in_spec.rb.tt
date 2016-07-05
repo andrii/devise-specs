@@ -8,7 +8,11 @@ feature '<%= human_name %> signs in' do
     <%= singular_name %> = Fabricate :<%= singular_name %>
 <% end -%>
 
-    sign_in <%= singular_name %>
+    visit new_<%= singular_name %>_session_path
+
+    fill_in 'Email', with: <%= singular_name %>.email
+    fill_in 'Password', with: <%= singular_name %>.password
+    click_button 'Log in'
 
     expect(page).to have_text 'Signed in successfully.'
     expect(page).to have_link 'Sign Out'
@@ -22,7 +26,11 @@ feature '<%= human_name %> signs in' do
     <%= singular_name %> = Fabricate.build :<%= singular_name %>
 <% end -%>
 
-    sign_in <%= singular_name %>
+    visit new_<%= singular_name %>_session_path
+
+    fill_in 'Email', with: <%= singular_name %>.email
+    fill_in 'Password', with: <%= singular_name %>.password
+    click_button 'Log in'
 
     expect(page).to have_text 'Invalid Email or password.'
     expect(page).to have_no_link 'Sign Out'

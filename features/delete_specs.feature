@@ -10,7 +10,7 @@ Feature: Delete specs
       """
             invoke  specs
             remove    spec/support/factory_girl.rb
-            remove    spec/support/helpers.rb
+            remove    spec/support/devise.rb
             remove    spec/features/user_signs_up_spec.rb
             remove    spec/features/user_signs_in_spec.rb
             remove    spec/features/user_signs_out_spec.rb
@@ -23,7 +23,7 @@ Feature: Delete specs
     Then the output should contain:
       """
             invoke  specs
-            remove    spec/support/helpers.rb
+            remove    spec/support/devise.rb
             remove    spec/features/user_signs_up_spec.rb
             remove    spec/features/user_signs_in_spec.rb
             remove    spec/features/user_signs_out_spec.rb

@@ -27,8 +27,8 @@ module Devise
         end
       end
 
-      def create_helpers_file
-        template 'helpers.rb', 'spec/support/helpers.rb'
+      def create_devise_config_file
+        template 'devise.rb', 'spec/support/devise.rb'
       end
 
       def create_specs

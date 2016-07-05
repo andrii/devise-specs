@@ -12,7 +12,7 @@ Feature: With factories
               gsub    spec/rails_helper.rb
             insert    spec/factories/users.rb
             create    spec/support/factory_girl.rb
-            create    spec/support/helpers.rb
+            create    spec/support/devise.rb
             create    spec/features/user_signs_up_spec.rb
             create    spec/features/user_signs_in_spec.rb
             create    spec/features/user_signs_out_spec.rb
@@ -55,7 +55,11 @@ Feature: With factories
         scenario 'with valid credentials' do
           user = create :user
 
-          sign_in user
+          visit new_user_session_path
+
+          fill_in 'Email', with: user.email
+          fill_in 'Password', with: user.password
+          click_button 'Log in'
 
           expect(page).to have_text 'Signed in successfully.'
           expect(page).to have_link 'Sign Out'
@@ -65,7 +69,11 @@ Feature: With factories
         scenario 'with invalid credentials' do
           user = build :user
 
-          sign_in user
+          visit new_user_session_path
+
+          fill_in 'Email', with: user.email
+          fill_in 'Password', with: user.password
+          click_button 'Log in'
 
           expect(page).to have_text 'Invalid Email or password.'
           expect(page).to have_no_link 'Sign Out'
@@ -81,6 +89,8 @@ Feature: With factories
           user = create :user
 
           sign_in user
+
+          visit root_path
 
           click_link 'Sign Out'
 
