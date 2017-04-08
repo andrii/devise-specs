@@ -1,3 +1,8 @@
+### 0.0.4
+
+* Make internal tests pass on Rails 5.1 and clean up docs
+
+
 ### 0.0.3
 
 * Use the new `Devise::Test::IntegrationHelpers` instead of the custom `sign_in` helper
