@@ -6,8 +6,13 @@ Given(/^I set up devise\-specs$/) do
     gem 'devise'
     gem 'devise-specs', path: '../..'
     gem 'rspec-rails'
-    gem 'capybara'
   RUBY
+
+  gemfile = File.join(Aruba.config.working_directory, 'Gemfile')
+
+  unless File.readlines(gemfile).grep(/capybara/).any?
+    append_to_file 'Gemfile', "gem 'capybara'\n"
+  end
 
   # define root route
   copy '%/routes.rb', 'config/routes.rb'
