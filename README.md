@@ -62,13 +62,6 @@ Add the authentication links to the layout, `user_signed_in?` should be `admin_s
 <% end %>
 ```
 
-Add the following lines to `config/application.rb` if you are using the Fabrication gem with version less than 2.15.1:
-```ruby
-config.generators do |g|
-  g.fixture_replacement :fabrication
-end
-```
-
 ## Usage
 
 Specs are created automatically when you generate a Devise model, e.g. `User`:
