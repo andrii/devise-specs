@@ -15,7 +15,7 @@ Works with Rails 4 and 5.
 
 ## Installation
 
-Specify the required dependencies in a `Gemfile`:
+Make sure `devise-specs`, `devise`, `rspec-rails`, `capybara` and fixture replacement gems are added to the `Gemfile`:
 ```ruby
 gem 'devise'
 
@@ -24,7 +24,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara' # already present in Rails 5.1 Gemfile
 end
 
 group :development, :test do
@@ -42,7 +42,7 @@ Generate the RSpec configuratoin files:
 $ rails generate rspec:install
 ```
 
-Generate the Devise configuration files and follow the setup instructions:
+Generate the Devise configuration files and follow the setup instructions to define the default url options, root route and flash messages:
 ```
 $ rails generate devise:install
 ```

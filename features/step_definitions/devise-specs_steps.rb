@@ -1,5 +1,5 @@
 Given(/^I set up devise\-specs$/) do
-  run_simple 'gem install rails --no-ri --no-rdoc'
+  run_simple 'gem install rails -N'
   run_simple 'rails new . --skip-spring'
 
   append_to_file 'Gemfile', <<~RUBY
