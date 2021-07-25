@@ -23,6 +23,8 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
+    - name: Install Bundler
+      run: gem install bundler
     - name: Set up Node
       uses: actions/setup-node@v2
       with:
