@@ -2,28 +2,29 @@ module Devise
   module Generators
     class SpecsGenerator < Rails::Generators::NamedBase
       ATTRIBUTES = %(
-        email 'username@example.com'
-        password 'password')
+        email { 'username@example.com' }
+        password { 'password' }
+      ).freeze
 
-      source_root File.expand_path("../templates", __FILE__)
+      source_root File.expand_path('../templates', __FILE__)
 
-      def require_supporting_files
-        uncomment_lines 'spec/rails_helper.rb', /spec.support.*rb.*require/
+      def require_support_files
+        uncomment_lines 'spec/rails_helper.rb', /spec.*support.*rb.*require/
       end
 
       def insert_fixture_replacement_attributes
         return if behavior == :revoke
 
-        if fixture_replacement == :factory_girl
-          insert_factory_girl_attributes
+        if fixture_replacement == :factory_bot
+          insert_factory_bot_attributes
         elsif fixture_replacement == :fabrication
           insert_fabrication_attributes
         end
       end
 
-      def create_factory_girl_config_file
-        if fixture_replacement == :factory_girl
-          template 'factory_girl.rb', 'spec/support/factory_girl.rb'
+      def create_factory_bot_config_file
+        if fixture_replacement == :factory_bot
+          template 'factory_bot.rb', 'spec/support/factory_bot.rb'
         end
       end
 
@@ -51,7 +52,7 @@ module Devise
         Rails.application.config.generators.rails[:fixture_replacement]
       end
 
-      def insert_factory_girl_attributes
+      def insert_factory_bot_attributes
         path  = "spec/factories/#{plural_name}.rb"
         attrs = ATTRIBUTES.gsub(/^ {4}/, '')
         after = "factory :#{singular_name} do"

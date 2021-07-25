@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature '<%= human_name %> signs out' do
+RSpec.feature '<%= human_name %> signs out' do
   scenario '<%= singular_name %> signed in' do
-<% if fixture_replacement == :factory_girl -%>
+<% if fixture_replacement == :factory_bot -%>
     <%= singular_name %> = create :<%= singular_name %>
 <% elsif fixture_replacement == :fabrication -%>
     <%= singular_name %> = Fabricate :<%= singular_name %>

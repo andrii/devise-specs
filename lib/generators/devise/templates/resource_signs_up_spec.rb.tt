@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature '<%= human_name %> signs up' do
+RSpec.feature '<%= human_name %> signs up' do
   scenario 'with valid data' do
     visit new_<%= singular_name %>_registration_path
 

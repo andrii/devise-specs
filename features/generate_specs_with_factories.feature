@@ -1,17 +1,17 @@
-Feature: With factories
+Feature: Generate specs with factories
 
   Background:
     Given I set up devise-specs
 
-  Scenario: running a devise generator with Factory Girl installed
-    Given I install factory_girl_rails
-    When I run `rails generate devise User`
+  Scenario: running a devise generator with Factory Bot installed
+    Given I install factory_bot_rails
+    When I run `bin/rails generate devise User`
     Then the output should contain:
       """
             invoke  specs
               gsub    spec/rails_helper.rb
             insert    spec/factories/users.rb
-            create    spec/support/factory_girl.rb
+            create    spec/support/factory_bot.rb
             create    spec/support/devise.rb
             create    spec/features/user_signs_up_spec.rb
             create    spec/features/user_signs_in_spec.rb
@@ -22,7 +22,7 @@ Feature: With factories
       """ruby
       require 'rails_helper'
 
-      feature 'User signs up' do
+      RSpec.feature 'User signs up' do
         scenario 'with valid data' do
           visit new_user_registration_path
 
@@ -51,7 +51,7 @@ Feature: With factories
       """ruby
       require 'rails_helper'
 
-      feature 'User signs in' do
+      RSpec.feature 'User signs in' do
         scenario 'with valid credentials' do
           user = create :user
 
@@ -84,7 +84,7 @@ Feature: With factories
       """ruby
       require 'rails_helper'
 
-      feature 'User signs out' do
+      RSpec.feature 'User signs out' do
         scenario 'user signed in' do
           user = create :user
 
@@ -104,7 +104,7 @@ Feature: With factories
       """ruby
       require 'rails_helper'
 
-      feature 'User resets a password' do
+      RSpec.feature 'User resets a password' do
         scenario 'user enters a valid email' do
           user = create :user
 

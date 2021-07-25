@@ -1,6 +1,5 @@
-- generate_specs:
-  - with_factories.feature
-  - with_fabricators.feature
+- generate_specs_with_factories.feature
+- generate_specs_with_fabricators.feature
+- specs_pass.feature
 - delete_specs.feature
 - skip_specs.feature
-- specs_pass.feature

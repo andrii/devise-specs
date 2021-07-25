@@ -1,0 +1,1 @@
+devise-specs is a Rails generator that creates RSpec feature specs for the default Devise registration, login, logout and password reset functionality. Cucumber feature files below act as an executable documentation for the different use cases of the library.

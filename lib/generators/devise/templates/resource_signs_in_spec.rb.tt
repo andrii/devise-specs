@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature '<%= human_name %> signs in' do
+RSpec.feature '<%= human_name %> signs in' do
   scenario 'with valid credentials' do
-<% if fixture_replacement == :factory_girl -%>
+<% if fixture_replacement == :factory_bot -%>
     <%= singular_name %> = create :<%= singular_name %>
 <% elsif fixture_replacement == :fabrication -%>
     <%= singular_name %> = Fabricate :<%= singular_name %>
@@ -20,7 +20,7 @@ feature '<%= human_name %> signs in' do
   end
 
   scenario 'with invalid credentials' do
-<% if fixture_replacement == :factory_girl -%>
+<% if fixture_replacement == :factory_bot -%>
     <%= singular_name %> = build :<%= singular_name %>
 <% elsif fixture_replacement == :fabrication -%>
     <%= singular_name %> = Fabricate.build :<%= singular_name %>

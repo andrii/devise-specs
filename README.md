@@ -1,9 +1,6 @@
-# devise-specs
+# devise-specs [![Build Status][ci-image]][ci] [![Maintainability][grade-image]][grade] [![Test Coverage][coverage-image]][coverage]
 
-[![Build Status](https://travis-ci.org/andrii/devise-specs.svg?branch=master)](https://travis-ci.org/andrii/devise-specs)
-[![Code Climate](https://codeclimate.com/github/andrii/devise-specs/badges/gpa.svg)](https://codeclimate.com/github/andrii/devise-specs)
-
-devise-specs is a Rails generator that adds the Devise authentication acceptance tests when you run the `devise` generator. The tests are RSpec feature specs containing Factory Girl or Fabrication fixture replacement methods and Capybara actions.
+devise-specs is a Rails generator that adds the Devise authentication acceptance tests when you run the `devise` generator. The tests are RSpec feature specs containing Factory Bot or Fabrication fixture replacement methods and Capybara actions.
 
 Generated feature specs test the following features:
 * Registration
@@ -11,11 +8,9 @@ Generated feature specs test the following features:
 * Logout
 * Password reset
 
-Works with Rails 4 and 5.
-
 ## Installation
 
-Make sure `devise-specs`, `devise`, `rspec-rails`, `capybara` and fixture replacement gems are added to the `Gemfile`:
+Make sure `devise`, `devise-specs`, `rspec-rails`, `capybara` and fixture replacement gems are added to the `Gemfile`:
 ```ruby
 gem 'devise'
 
@@ -24,12 +19,12 @@ group :development do
 end
 
 group :test do
-  gem 'capybara' # already present in Rails 5.1 Gemfile
+  gem 'capybara'
 end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails' # or: gem 'fabrication'
+  gem 'factory_bot_rails' # or: gem 'fabrication'
 end
 ```
 
@@ -39,12 +34,12 @@ and then run `bundle install`.
 
 Generate the RSpec configuratoin files:
 ```
-$ rails generate rspec:install
+$ bin/rails generate rspec:install
 ```
 
 Generate the Devise configuration files and follow the setup instructions to define the default url options, root route and flash messages:
 ```
-$ rails generate devise:install
+$ bin/rails generate devise:install
 ```
 
 Configure the Action Mailer URL options for the test environment using the following line in `config/environments/test.rb`:
@@ -66,12 +61,12 @@ Add the authentication links to the layout, `user_signed_in?` should be `admin_s
 
 Specs are created automatically when you generate a Devise model, e.g. `User`:
 ```
-$ rails generate devise User
+$ bin/rails generate devise User
          ...
       invoke  specs
         gsub    spec/rails_helper.rb
       insert    spec/factories/users.rb
-      create    spec/support/factory_girl.rb
+      create    spec/support/factory_bot.rb
       create    spec/support/devise.rb
       create    spec/features/user_signs_up_spec.rb
       create    spec/features/user_signs_in_spec.rb
@@ -81,12 +76,12 @@ $ rails generate devise User
 
 If a Devise model is already present, run the `devise:specs` generator directly:
 ```
-$ rails generate devise:specs User
+$ bin/rails generate devise:specs User
 ```
 
 Run the migrations:
 ```
-$ rake db:migrate RAILS_ENV=test
+$ bin/rails db:migrate RAILS_ENV=test
 ```
 
 Make sure the specs pass:
@@ -116,9 +111,9 @@ Adds `email` and `password` attributes to the fabricator.
 
 Adds `email` and `password` attributes to the factory.
 
-`create    spec/support/factory_girl.rb`
+`create    spec/support/factory_bot.rb`
 
-Includes `FactoryGirl::Syntax::Methods` into RSpec config to avoid prefacing Factory Girl methods with `FactoryGirl`.
+Includes `FactoryBot::Syntax::Methods` into RSpec config to avoid prefacing Factory Bot methods with `FactoryBot`.
 
 `create    spec/support/devise.rb`
 
@@ -130,14 +125,7 @@ Generates a corresponding feature spec.
 
 ## Testing
 
-Install Ruby, development tools, Nokogiri, SQLite and JavaScript runtime system dependencies.
-
-On Ubuntu/Mint/Debian:
-```
-$ apt-get install ruby-full build-essential zlib1g-dev libsqlite3-dev nodejs
-```
-
-Install development dependencies with `bundle install` and run the tests: 
+Install system and development dependencies and run the tests:
 ```
 $ bundle exec rake
 ```
@@ -145,3 +133,10 @@ $ bundle exec rake
 ## License
 
 MIT License
+
+[ci-image]: https://github.com/ponosoft/devise-specs/actions/workflows/build.yml/badge.svg
+[ci]: https://github.com/ponosoft/devise-specs/actions/workflows/build.yml
+[grade-image]: https://api.codeclimate.com/v1/badges/b7e541f2f5171790638f/maintainability
+[grade]: https://codeclimate.com/github/ponosoft/devise-specs/maintainability
+[coverage-image]: https://api.codeclimate.com/v1/badges/b7e541f2f5171790638f/test_coverage
+[coverage]: https://codeclimate.com/github/ponosoft/devise-specs/test_coverage

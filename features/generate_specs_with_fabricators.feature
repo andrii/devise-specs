@@ -1,11 +1,11 @@
-Feature: With fabricators
+Feature: Generate specs with fabricators
 
   Background:
     Given I set up devise-specs
 
   Scenario: running a devise generator with Fabrication installed
     Given I install fabrication
-    When I run `rails generate devise Admin`
+    When I run `bin/rails generate devise Admin`
     Then the output should contain:
       """
             invoke  specs
@@ -21,7 +21,7 @@ Feature: With fabricators
       """ruby
       require 'rails_helper'
 
-      feature 'Admin signs up' do
+      RSpec.feature 'Admin signs up' do
         scenario 'with valid data' do
           visit new_admin_registration_path
 
@@ -50,7 +50,7 @@ Feature: With fabricators
       """ruby
       require 'rails_helper'
 
-      feature 'Admin signs in' do
+      RSpec.feature 'Admin signs in' do
         scenario 'with valid credentials' do
           admin = Fabricate :admin
 
@@ -83,7 +83,7 @@ Feature: With fabricators
       """ruby
       require 'rails_helper'
 
-      feature 'Admin signs out' do
+      RSpec.feature 'Admin signs out' do
         scenario 'admin signed in' do
           admin = Fabricate :admin
 
@@ -103,7 +103,7 @@ Feature: With fabricators
       """ruby
       require 'rails_helper'
 
-      feature 'Admin resets a password' do
+      RSpec.feature 'Admin resets a password' do
         scenario 'admin enters a valid email' do
           admin = Fabricate :admin
 
