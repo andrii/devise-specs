@@ -1,7 +1,7 @@
 require 'aruba/cucumber'
 
 Aruba.configure do |config|
-  config.exit_timeout = 240
+  config.exit_timeout = 300
 end
 
 Before do

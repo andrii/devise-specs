@@ -1,4 +1,4 @@
-# devise-specs [![Build Status][ci-image]][ci] [![Maintainability][grade-image]][grade] [![Test Coverage][coverage-image]][coverage]
+# devise-specs [![Build Status][ci-image]][ci] [![Maintainability][grade-image]][grade]
 
 devise-specs is a Rails generator that adds the Devise authentication acceptance tests when you run the `devise` generator. The tests are RSpec feature specs containing Factory Bot or Fabrication fixture replacement methods and Capybara actions.
 
@@ -138,5 +138,3 @@ MIT License
 [ci]: https://github.com/ponosoft/devise-specs/actions/workflows/build.yml
 [grade-image]: https://api.codeclimate.com/v1/badges/b7e541f2f5171790638f/maintainability
 [grade]: https://codeclimate.com/github/ponosoft/devise-specs/maintainability
-[coverage-image]: https://api.codeclimate.com/v1/badges/b7e541f2f5171790638f/test_coverage
-[coverage]: https://codeclimate.com/github/ponosoft/devise-specs/test_coverage
