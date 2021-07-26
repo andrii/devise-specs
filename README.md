@@ -2,6 +2,8 @@
 
 devise-specs is a Rails generator that adds the Devise authentication acceptance tests when you run the `devise` generator. The tests are RSpec feature specs containing Factory Bot or Fabrication fixture replacement methods and Capybara actions.
 
+![Demo GIF](https://user-images.githubusercontent.com/49207/126929193-f9228814-6ff1-4e5b-b24e-762dbdee996f.gif)
+
 Generated feature specs test the following features:
 * Registration
 * Login
