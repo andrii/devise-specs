@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = 'devise-specs'
-  s.version  = '0.0.4'
+  s.version  = '0.0.5'
   s.authors  = ['Andrii Ponomarov']
   s.email    = 'andrii.ponomarov@gmail.com'
   s.summary  = 'Generates the Devise acceptance tests.'
